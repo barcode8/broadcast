@@ -7,10 +7,15 @@ let connection;
 let channel;
 
 export const connectRabbit = async () => {
-    connection = await amqp.connect(process.env.RABBITMQ_URL);
-    channel = await connection.createChannel();
+    try {
+        connection = await amqp.connect(process.env.RABBITMQ_URL);
+        channel = await connection.createChannel();
+        console.log("RabbitMQ connected")
 
-    return channel;
+        return channel;
+    } catch (error) {
+        console.log(error)
+    }
 };
 
 export const getChannel = () => {
