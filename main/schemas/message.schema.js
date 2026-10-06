@@ -2,12 +2,12 @@ import mongoose from "mongoose";
 
 const messageScehma = new mongoose.Schema({
     content: {
-        type: string,
+        type: String,
         required: true
     },
 
     clearance:{
-        type: string,
+        type: String,
         required: true
     }
 })

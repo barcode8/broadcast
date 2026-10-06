@@ -2,6 +2,7 @@ import express from "express"
 import dotenv from "dotenv"
 import { connectDB } from "./db/connectDB.js"
 import { setupRabbitMQ } from "./rabbit/setUpRabbit.js";
+import broadcastRouter from "./routes/broadcast.router.js"
 
 dotenv.config();
 
@@ -17,3 +18,5 @@ await setupRabbitMQ()
 app.listen(PORT, () => {
     console.log(`Order server running on port ${PORT}`);
 });
+
+app.use("/broadcast", broadcastRouter)
