@@ -15,10 +15,6 @@ export const setupQueues = async () => {
         durable: true,
     });
 
-    await channel.assertQueue("user2.queue", {
-        durable: true,
-    });
-
     await channel.assertQueue("ack.queue", {
         durable: true
     })
