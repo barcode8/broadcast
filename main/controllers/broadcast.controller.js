@@ -52,3 +52,24 @@ export const broadcastMessage = async (req, res) => {
     })
 }
 
+export const getAllMessages = async (req, res) => {
+    const messages = await Message.find()
+
+    if(!messages){
+        return res
+        .status(404)
+        .json({
+            success : false,
+            message : "Failed to find messages"
+        })
+    }
+
+    return res
+    .status(200)
+    .json({
+        success : true,
+        message : "Messages successfully found",
+        messages
+    })
+}
+
