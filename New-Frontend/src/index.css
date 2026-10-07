@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap');
+
+:root {
+  font-family: 'DM Sans', sans-serif;
+  color: #e9efeb;
+  background: #101513;
+  color-scheme: dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-optical-sizing: auto;
+  font-weight: 400;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { min-width: 320px; min-height: 100vh; }
+html { background: #101513; scrollbar-color: #405149 #101513; scrollbar-width: thin; }
+body { margin: 0; background: #101513; color: #e9efeb; }
+button, input, textarea, select { font: inherit; }
+button { cursor: pointer; }
+button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 3px solid #a3d8c4;
+  outline-offset: 2px;
+}
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #101513; }
+::-webkit-scrollbar-thumb { border: 2px solid #101513; border-radius: 8px; background: #405149; }
+::-webkit-scrollbar-thumb:hover { background: #587063; }
