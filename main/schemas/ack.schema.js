@@ -20,10 +20,6 @@ const ackSchema = new mongoose.Schema({
     }
 })
 
-ackSchema.index(
-    { messageId: 1, consumer: 1 },
-    { unique: true }
-);
 
 const Ack = mongoose.model("Ack", ackSchema)
 

@@ -6,7 +6,7 @@ export const setupBindings = async () => {
     await channel.bindQueue(
         "admin.queue",
         "broadcast",
-        "broadcast.admin.*"
+        "broadcast.*"
     );
 
     await channel.bindQueue(

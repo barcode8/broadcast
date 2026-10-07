@@ -18,7 +18,7 @@ await connectDB()
 await setupRabbitMQ()
 
 app.listen(PORT, () => {
-    console.log(`Order server running on port ${PORT}`);
+    console.log(`Main server running on port ${PORT}`);
 });
 
 app.use("/broadcast", broadcastRouter)

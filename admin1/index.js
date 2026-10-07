@@ -39,5 +39,5 @@ channel.consume("admin.queue", async (message) => {
 })
 
 app.listen(PORT, () => {
-    console.log(`Order server running on port ${PORT}`);
+    console.log(`Admin server running on port ${PORT}`);
 });

@@ -23,6 +23,7 @@ export const broadcastMessage = async (req, res) => {
 
     if(normalisedClearance === "user"){
         publishUserMessages(message)
+        publishAdminMessages(message)
         return res
         .status(201)
         .json({
