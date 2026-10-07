@@ -2,7 +2,8 @@ import express from "express"
 import dotenv from "dotenv"
 import { connectDB } from "./db/connectDB.js"
 import { setupRabbitMQ } from "./rabbit/setUpRabbit.js";
-import broadcastRouter from "./routes/broadcast.router.js"
+import broadcastRouter from "./routes/broadcast.routes.js"
+import ackRouter from "./routes/ack.routes.js"
 import { getChannel } from "./rabbit/connection.js";
 import { createAckRecord } from "./db/createAckRecord.js";
 
@@ -22,6 +23,7 @@ app.listen(PORT, () => {
 });
 
 app.use("/broadcast", broadcastRouter)
+app.use("/ack", ackRouter)
 
 const channel = getChannel()
 
