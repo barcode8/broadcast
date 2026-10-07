@@ -3,6 +3,8 @@ import dotenv from "dotenv"
 import { connectDB } from "./db/connectDB.js"
 import { setupRabbitMQ } from "./rabbit/setUpRabbit.js";
 import broadcastRouter from "./routes/broadcast.router.js"
+import { getChannel } from "./rabbit/connection.js";
+import { createAckRecord } from "./db/createAckRecord.js";
 
 dotenv.config();
 
@@ -20,3 +22,22 @@ app.listen(PORT, () => {
 });
 
 app.use("/broadcast", broadcastRouter)
+
+const channel = getChannel()
+
+channel.consume("ack.queue", async (ackMessage) => {
+    if(!ackMessage) return;
+
+    try {
+        const ack = JSON.parse(ackMessage.content.toString())
+
+        console.log(`Recieved ACK message from ${ack.consumer}`)
+
+        await createAckRecord(ack)
+        channel.ack(ackMessage)
+    } catch (error) {
+        console.error("Ack record job failed:", error);
+
+        channel.nack(ackMessage, false, true);
+    }
+})
